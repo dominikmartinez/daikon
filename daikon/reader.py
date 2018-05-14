@@ -79,7 +79,7 @@ def read_parallel(source_filename: str,
         the list of source word ids, and target word ids, respectively.
     """
 
-    for source_ids, target_ids in zip(read(source_filename, source_vocab).reverse(),
+    for source_ids, target_ids in zip(read(source_filename, source_vocab),
                                       read(target_filename, target_vocab)):
         if [] in [source_ids, target_ids]:
             # skip parallel segments where one or both sides are empty
@@ -87,7 +87,7 @@ def read_parallel(source_filename: str,
         if (len(source_ids) > max_length) or (len(target_ids) > max_length):
             # skip segments that are too long
             continue
-
+	source_ids.reverse()
         yield (source_ids, target_ids)
 
 
