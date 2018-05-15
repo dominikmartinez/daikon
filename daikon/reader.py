@@ -87,7 +87,7 @@ def read_parallel(source_filename: str,
         if (len(source_ids) > max_length) or (len(target_ids) > max_length):
             # skip segments that are too long
             continue
-	source_ids.reverse()
+        source_ids.reverse()
         yield (source_ids, target_ids)
 
 
